@@ -24,6 +24,9 @@ project = args[2]
 	 if(!file.exists("GDCdata/miRNA")){
 		 dir.create("GDCdata/miRNA",recursive = T)
 	 }
+	 if(!file.exists("GDCdata/miRNA_ISO")){
+		 dir.create("GDCdata/miRNA_ISO",recursive = T)
+	 }
 	 #	 match.file.cases.all <- NULL
 	 #  for(project in  project_df[,2]){
 	 filename <- gsub("-","_",paste0("result/",project,"_",type,".tsv"))
@@ -67,6 +70,18 @@ project = args[2]
 			 GDCdownload(query,directory = "GDCdata/miRNA",method = "api")
 			 data <- GDCprepare(query,
 					    directory = "GDCdata/miRNA",
+					    summarizedExperiment = F,
+					    save = F)
+			 readr::write_tsv(data,file =filename )
+		 }else if(type=="miRNA_ISO"){
+			 query<- GDCquery(project = project,
+					  data.category = "Transcriptome Profiling",
+					  data.type = "Isoform Expression Quantification",
+					  workflow.type = "BCGSC miRNA Profiling")
+
+			 GDCdownload(query,directory = "GDCdata/miRNA_ISO",method = "api")
+			 data <- GDCprepare(query,
+					    directory = "GDCdata/miRNA_ISO",
 					    summarizedExperiment = F,
 					    save = F)
 			 readr::write_tsv(data,file =filename )
