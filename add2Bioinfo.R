@@ -1,9 +1,43 @@
+# private static String[] filenames = new String[]{"Cancer","Study","DataOrigin","DataCategory","AnalysisSoftware","CancerStudy"};
+
+
 library(BioinfoR)
+library(tidyverse)
+
 source("generate_proj.R")
 initParam(authorization = "")
 showParam()
-proejct_df <- readr::read_tsv("TCGA_PROJECT.csv")
+
+proejct_df <- readr::read_csv("TCGA_PROJECT.csv")
 global <- globalConfig()
+
+proejct_df |>
+  select(name=cancer,enName=cancer) |>
+  write_tsv(file="Cancer.tsv")
+
+data.frame(name=c("Cancer"),
+            enName=c("Cancer")) |>
+  write_tsv(file="data/Cancer.tsv")
+
+data.frame(name=c("Study"),
+            enName=c("Study")) |>
+  write_tsv(file="data/Study.tsv")
+
+
+data.frame(name=c("DataOrigin"),
+            enName=c("DataOrigin")) |>
+  write_tsv(file="data/DataOrigin.tsv")
+
+
+data.frame(name=c("DataOrigin"),
+            enName=c("DataOrigin")) |>
+  write_tsv(file="data/DataCategory.tsv")
+
+
+data.frame(name=c("AnalysisSoftware"),
+            enName=c("AnalysisSoftware")) |>
+  write_tsv(file="data/AnalysisSoftware.tsv")
+
 
 
 result_df <- NULL
