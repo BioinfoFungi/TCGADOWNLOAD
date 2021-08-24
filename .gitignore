@@ -1,6 +1,9 @@
 *
+!*/
 !*.R
 !*.py
 !.gitignore
 !README.md
 !*.sh
+!/data/*.tsv
+!TCGA_PROJECT.csv
