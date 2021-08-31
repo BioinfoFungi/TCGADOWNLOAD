@@ -1,5 +1,6 @@
 library(TCGAbiolinks)
 getwd()
+
 #####下载COUNT
 if(!file.exists("GDCdata/Counts")){
     dir.create("GDCdata/Counts",recursive = T)
@@ -8,8 +9,14 @@ if(!file.exists("result")){
     dir.create("result")
 }
 
+
+if(!exists("cancer")){
+  cancer <- "ACC"
+}
+
+
 project <- paste0("TCGA-",cancer)
-message(project)
+message("TCGA_DOENLOAD_MRNA_COUNT.R",project)
 match.file.cases.all <- NULL
 filename <- gsub("-","_",paste0("result/",project,"_Counts.tsv"))
 query<- GDCquery(project = project,

@@ -1,0 +1,10 @@
+library(TCGAbiolinks)
+getwd()
+
+project <- paste0("TCGA-",cancer)
+filename <- gsub("-","_",paste0("result/",project,"_clinical.tsv"))
+message(">>>>>>>>>>>>>>>>>>>>",filename)
+clinical <- GDCquery_clinic(project = project, type = "clinical")
+readr::write_tsv(clinical,file =filename )
+cat("$update:true","\n")
+cat("$absolutePath:",paste0(workDir,"/",filename,".gz"))

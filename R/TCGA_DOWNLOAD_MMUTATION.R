@@ -1,6 +1,7 @@
 library(TCGAbiolinks)
+library(readr)
 getwd()
-filename <- gsub("-","_",paste0("result/TCGA_",project,"_mutation_varscan2.tsv"))
+filename <- gsub("-","_",paste0("result/TCGA_",cancer,"_mutation_varscan2.tsv"))
 message(">>>>>>>>>>>>>>>>>>>>",filename)
 maf <- GDCquery_Maf(cancer, pipelines = "varscan2")
 readr::write_tsv(maf,file =filename )

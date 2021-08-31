@@ -15,7 +15,7 @@ filename <- gsub("-","_",paste0("result/",project,"_FPKM.tsv"))
 query<- GDCquery(project = project,
                        data.category = "Transcriptome Profiling",
                        data.type = "Gene Expression Quantification",
-                       workflow.type = "HTSeq - Counts")
+                       workflow.type = "HTSeq - FPKM")
 
 # match.file.cases <- getResults(query,cols=c("cases","file_name"))
 # match.file.cases$project <- project
