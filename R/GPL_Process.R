@@ -13,7 +13,7 @@ symbol_ <- symbol
 cat(absolutePath,"\n")
 gpl_obj <- getGEO(filename = absolutePath)
 gpl <- gpl_obj@dataTable@table |> 
-    dplyr::select("ID"=probeId,symbol=symbol_) -> gpl_two
+    dplyr::select(probeId=probeId_,symbol=symbol_) -> gpl_two
 
 
 saveFile <- paste0(workDir,"/GPL/",enName,".tsv")
