@@ -34,3 +34,4 @@ system(paste0("gzip -f ",saveFile_metadata))
 
 cat("$expr:",saveFile_expr,".gz\n")
 cat("$metadata:",saveFile_metadata,".gz\n")
+cat("$update:true","\n")

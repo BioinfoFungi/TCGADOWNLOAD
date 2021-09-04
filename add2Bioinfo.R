@@ -5,9 +5,11 @@ library(BioinfoR)
 library(tidyverse)
 
 source("generate_proj.R")
-initParam(authorization = "")
+initParam(authorization = "wangwang1749748955",host="http://8.140.164.151:8080")
 showParam()
-
+addOrganizeFile(enName = "132456",
+                absolutePath = "/home/wy/Downloads/TCGA_ESCA_clinical.tsv",
+                relativePath = "Downloads/TCGA_ACC_Counts.tsv")
 proejct_df <- readr::read_csv("TCGA_PROJECT.csv")
 global <- globalConfig()
 
