@@ -2,16 +2,17 @@ library(GEOquery)
 library(tidyverse)
 
 if(F){
-    gse <- "GSE101124"
-    absolutePath <- "/home/wangyang/Public/bioinfo/BRCA/data/GSE101123_series_matrix.txt.gz"
+    gse <- "GSE10469"
+    absolutePath <- "/home/wangyang/.bioinfo/data/GSE10469_series_matrix.txt.gz"
     workDir <- "."
 }
 gset <- getGEO(filename = absolutePath,getGPL = F)
 expr <- gset@assayData[["exprs"]]
-cat("$annotation:",gset@annotation,"\n")
 
-gpl_url <- paste0("http://bioinfo.online:8082/data/GPL/",gset@annotation,".tsv.gz")
+
+gpl_url <- paste0("http://localhost:8080/data/GPL/",gset@annotation,".tsv.gz")
 gpl <- read_tsv(gpl_url)
+# View(gpl)
 expr |>
     as.data.frame() |>
     rownames_to_column("probeId") |> 
@@ -30,8 +31,13 @@ write_tsv(gset@phenoData@data, file=saveFile_metadata)
 system(paste0("gzip -f ",saveFile_expr))
 system(paste0("gzip -f ",saveFile_metadata))
 
+gse_download <- paste0(saveFile_expr,".gz")
+metadata <-  paste0(saveFile_metadata,".gz")
+cat("$[0]analysisSoftware:","integrated_expression_matrix","\n")
+cat("$[0]annotation:",gset@annotation,"\n")
+cat("$[0]absolutePath:",saveFile_expr,".gz\n")
 
+cat("$[1]absolutePath:",saveFile_metadata,".gz\n")
+cat("$[1]analysisSoftware:","metadata","\n")
 
-cat("$expr:",saveFile_expr,".gz\n")
-cat("$metadata:",saveFile_metadata,".gz\n")
-cat("$update:true","\n")
+#cat("$update:true","\n")

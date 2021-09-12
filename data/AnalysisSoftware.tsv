@@ -1,4 +1,6 @@
-name	enName
-limma	limma
-DESeq2	DESeq2
-VarScan2	VarScan2
+id	name	enName
+1	limma	limma
+2	DESeq2	DESeq2
+3	VarScan2	VarScan2
+4	download	download
+5	add_manully	add_manully

@@ -1,0 +1,4 @@
+id	gse	cancer	study	dataOrigin	dataCategory	analysisSoftware	absolutePath	param
+	GPL6480			GEO	GPL 	dwonlaod		"{probeId:'ID',symbol:'GENE_SYMBOL'}"
+	GSE10469			GEO	GSE	dwonlaod		
+	GSE10878			GEO	GSE	dwonlaod		
